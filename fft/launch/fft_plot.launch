@@ -1,0 +1,8 @@
+<launch>
+  <node name="fft_plot"
+	pkg="fft" type="fft_plot.py">
+    <remap from="~spectrum" to="/fft/output" />
+    <rosparam>
+    </rosparam>
+  </node>
+</launch>

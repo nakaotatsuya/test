@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package>
+  <name>fft</name>
+  <version>0.0.0</version>
+  <description>The fft package</description>
+
+  <maintainer email="h-ito@jsk.imi.i.u-tokyo.ac.jp">itohdak</maintainer>
+
+  <license>TODO</license>
+
+  <build_depend>message_generation</build_depend>
+  <run_depend>message_runtime</run_depend>
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <export>
+  </export>
+</package>

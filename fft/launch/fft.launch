@@ -1,0 +1,44 @@
+<launch>
+  <arg name="sampling_rate" default="8000" />
+  <arg name="threshold" default="100000" />
+  <arg name="audio_prefetch" default="0.5" />
+  <arg name="plot" default="false" />
+  <arg name="audio_topic" default="/audio" />
+  <arg name="launch_audio_capture" default="false" />
+
+  <node name="audio_capture"
+        pkg="audio_capture" type="audio_capture"
+        if="$(arg launch_audio_capture)"
+        output="screen">
+    <param name="format" value="wave" />
+    <param name="channels" value="1" />
+    <param name="depth" value="16" />
+    <param name="sample_rate" value="16000" />
+  </node>
+
+  <node name="fft"
+	pkg="fft" type="fft_node.py"
+	output="screen">
+    <remap from="~audio" to="$(arg audio_topic)" />
+    <rosparam subst_value="true">
+      sampling_rate: $(arg sampling_rate)
+      audio_prefetch: $(arg audio_prefetch)
+    </rosparam>
+  </node>
+
+  <node name="fft_feature_extraction"
+	pkg="fft" type="fft_feature_extraction.py">
+    <remap from="~input" to="/fft/output" />
+    <rosparam subst_value="true">
+      threshold: $(arg threshold)
+    </rosparam>
+  </node>
+
+  <node name="fft_plot"
+  	pkg="fft" type="fft_plot.py"
+	if="$(arg plot)">
+    <remap from="~spectrum" to="/fft/output" />
+    <rosparam>
+    </rosparam>
+  </node>
+</launch>
