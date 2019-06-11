@@ -29,6 +29,7 @@
   <node name="fft_feature_extraction"
 	pkg="fft" type="fft_feature_extraction.py">
     <remap from="~input" to="/fft/output" />
+    <remap from="~output" to="/fft/max_freq_output" />
     <rosparam subst_value="true">
       threshold: $(arg threshold)
     </rosparam>
