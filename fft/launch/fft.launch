@@ -35,9 +35,9 @@
     </rosparam>
   </node>
 
-  <node name="fft_plot"
-  	pkg="fft" type="fft_plot.py"
-	if="$(arg plot)">
+  <node name="fft_qtplot"
+  	pkg="fft" type="fft_qtplot.py"
+        if="$(arg plot)">
     <remap from="~spectrum" to="/fft/output" />
     <rosparam>
     </rosparam>

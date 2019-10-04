@@ -53,11 +53,11 @@ class FFTPlotNode():
         self.lines1.set_data(self.freq, self.Amp)
         self.ax1.set_xlim((self.freq.min(), self.freq.max()/2))
         # self.ax1.set_ylim((0.0, Amp.max()))
-        self.ax1.set_ylim((0.0, 2e+5))
+        self.ax1.set_ylim((0.0, 5e+5))
         self.ax1.legend(loc='upper right')
 
 if __name__=='__main__':
     rospy.init_node('fft_plot_node')
     FFTPlotNode()
     while not rospy.is_shutdown():
-        plt.pause(.1)
+        plt.pause(.01)

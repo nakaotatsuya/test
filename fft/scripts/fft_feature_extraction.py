@@ -26,7 +26,7 @@ class FFTFeatureExtraction():
         half = max(msg.frequency) / 2.0
         orig_freq = np.array(msg.frequency)
         orig_Amp = np.array(msg.spectrum)
-        cut_off_ind = np.where((1000.0 < orig_freq) & (orig_freq < half))
+        cut_off_ind = np.where((1500.0 < orig_freq) & (orig_freq < half))
 
         freq = orig_freq[cut_off_ind]
         Amp = orig_Amp[cut_off_ind]
